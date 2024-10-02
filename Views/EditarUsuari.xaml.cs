@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPF_MVVM_SPA_Template.Views.Themes
+namespace WPF_MVVM_SPA_Template.Views
 {
     /// <summary>
     /// Lógica de interacción para EditarUsuari.xaml
