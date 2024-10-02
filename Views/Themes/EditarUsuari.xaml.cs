@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPF_MVVM_SPA_Template.Views
+namespace WPF_MVVM_SPA_Template.Views.Themes
 {
     /// <summary>
-    /// Lógica de interacción para FacturesView.xaml
+    /// Lógica de interacción para EditarUsuari.xaml
     /// </summary>
-    public partial class FacturesView : UserControl
+    public partial class EditarUsuari : UserControl
     {
-        public FacturesView()
+        public EditarUsuari()
         {
             InitializeComponent();
         }

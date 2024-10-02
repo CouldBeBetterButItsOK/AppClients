@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using WPF_MVVM_SPA_Template.Models;
+using WPF_MVVM_SPA_Template.Views;
 
 namespace WPF_MVVM_SPA_Template.ViewModels
 {
@@ -31,6 +32,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
         }
         public RelayCommand AddClientCommand { get; set; }
         public RelayCommand DelClientCommand { get; set; }
+        public RelayCommand EditClientCommand { get; set; }
 
         public ClientViewModel(MainViewModel mainViewModel)
         {
@@ -41,10 +43,18 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             // Inicialitzem els diferents commands disponibles (accions)
             AddClientCommand = new RelayCommand(x => AddClient());
             DelClientCommand = new RelayCommand(x => DelClient());
+            EditClientCommand = new RelayCommand(x => EditClient());
         }
+        private void EditClient()
+        {
+            if (SelectedClient != null) {
+                _mainViewModel.CurrentView = new FacturesView { DataContext = this };
+                Client = new Client { Code = "xxxx", Name = "xxxx", DniNif = "xxxx", Profesional =  
+            } }
         private void AddClient()
         {
             Clients.Add(new Client { Code = "C002", Name = "Jordi", DniNif = "87654321B", Profesional = false, Discount = 5, RegistrationDate = DateTime.Now, TotalAnualSells = 1200 });
+            _mainViewModel.CurrentView = new ClientsView { DataContext = this };
         }
 
         private void DelClient()

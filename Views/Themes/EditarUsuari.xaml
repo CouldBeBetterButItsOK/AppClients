@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="WPF_MVVM_SPA_Template.Views.Themes.EditarUsuari"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_MVVM_SPA_Template.Views.Themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White" Margin="10">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="100">
+            <StackPanel Orientation="Horizontal">
+                
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Guardar" Command="{Binding GuardarClientCommand}" Margin="5" Padding="10,5" 
+         Style="{StaticResource ModernPrimaryButtonStyle}"/>
+            <Button Content="Cancelar" Command="{Binding NoGuardarClientCommand}" 
+         Margin="5" Padding="10,5" Style="{StaticResource ModernSecundaryButtonStyle}"/>
+        </StackPanel>
+        </StackPanel>
+    </Grid>
+    
+</UserControl>

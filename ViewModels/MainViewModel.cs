@@ -12,6 +12,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
         public Option1ViewModel Option1VM { get; set; }
         public Option2ViewModel Option2VM { get; set; }
         public ClientViewModel ClientVM { get; set; }
+        public FacturaViewModel FacturaVM { get; set; }
 
         // Propietat que conté la vista actual (és un objecte)
         private object? _currentView;
@@ -40,6 +41,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             Option1VM = new Option1ViewModel(this);
             Option2VM = new Option2ViewModel(this);
             ClientVM = new ClientViewModel(this);
+            FacturaVM = new FacturaViewModel(this);
             // Mostra la vista principal inicialment
             SelectedView = "Clients";
             ChangeView();
@@ -53,6 +55,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
                 case "Option1": CurrentView = new Option1View { DataContext = Option1VM }; break;
                 case "Option2": CurrentView = new Option2View { DataContext = Option2VM }; break;
                 case "Clients": CurrentView = new ClientsView { DataContext = ClientVM }; break;
+                case "Factures": CurrentView = new FacturesView { DataContext = FacturaVM }; break;
             }
         }
 
