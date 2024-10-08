@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using WPF_MVVM_SPA_Template.Models;
 using WPF_MVVM_SPA_Template.Views;
+using System.Diagnostics.Eventing.Reader;
+using System.Windows;
 
 namespace WPF_MVVM_SPA_Template.ViewModels
 {
@@ -34,8 +36,8 @@ namespace WPF_MVVM_SPA_Template.ViewModels
         public Client? EditableClient
         {
             get { return _editableClient; }
-            set { _editableClient = value; OnPropertyChanged() ; }
-    }
+            set { _editableClient = value; OnPropertyChanged(); }
+        }
         public RelayCommand AddClientCommand { get; set; }
         public RelayCommand DelClientCommand { get; set; }
         public RelayCommand EditClientCommand { get; set; }
@@ -60,30 +62,26 @@ namespace WPF_MVVM_SPA_Template.ViewModels
         {
             if (SelectedClient != null)
             {
-                EditableClient = new Client
-                {
-                    Code = SelectedClient.Code,
-                    Name = SelectedClient.Name,
-                    DniNif = SelectedClient.DniNif,
-                    Profesional = SelectedClient.Profesional,
-                    RegistrationDate = SelectedClient.RegistrationDate,
-                    Discount = SelectedClient.Discount,
-                    TotalAnualSells = SelectedClient.TotalAnualSells
-                };
+                EditableClient = new Client();
+                EditableClient.cloneClient(SelectedClient);
                 _mainViewModel.CurrentView = new EditarUsuari { DataContext = this };
             }
         }
-        private void SaveClient()
-{
-    
-            SelectedClient.Code = EditableClient.Code;
-            SelectedClient.Name = EditableClient.Name;
-            SelectedClient.DniNif = EditableClient.DniNif;
-            SelectedClient.Profesional = EditableClient.Profesional;
-            SelectedClient.Discount = EditableClient.Discount;
-            SelectedClient.RegistrationDate = EditableClient.RegistrationDate;
-            SelectedClient.TotalAnualSells = EditableClient.TotalAnualSells;
-            SelectedClient = null;
+        private void SaveClient(){
+            if (ClientCheck(EditableClient)){ 
+                if (SelectedClient != null)
+                {
+                    SelectedClient.cloneClient(EditableClient);
+                    SelectedClient = null;
+                }
+                else { Clients.Add(new Client(EditableClient));
+                    } }
+            else{
+                MessageBox.Show("El client no es válid. Per favor, revisi les dades i torni-ho a probar.",
+                        "Error de validació",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+            }
                 
 
             _mainViewModel.CurrentView = new ClientsView { DataContext = this };
@@ -99,8 +97,11 @@ namespace WPF_MVVM_SPA_Template.ViewModels
         }
         private void AddClient()
         {
-            Clients.Add(new Client { Code = "C002", Name = "Jordi", DniNif = "87654321B", Profesional = false, Discount = 5, RegistrationDate = DateTime.Now, TotalAnualSells = 1200 });
-            _mainViewModel.CurrentView = new ClientsView { DataContext = this };
+            SelectedClient = null;
+            EditableClient = new Client();
+            EditableClient.Code = "C" + (Clients.Count + 1).ToString("D3");
+            EditableClient.RegistrationDate = DateTime.Now;
+            _mainViewModel.CurrentView = new EditarUsuari { DataContext = this };
         }
 
         private void DelClient()
@@ -108,7 +109,17 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             if (SelectedClient != null)
                 Clients.Remove(SelectedClient);
         }
-        
+        public Boolean ClientCheck(Client client)
+        {
+            if(client.Name != null & client.Name != "")
+            {
+                if(client.DniNif != null & client.DniNif != "")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
        
 
