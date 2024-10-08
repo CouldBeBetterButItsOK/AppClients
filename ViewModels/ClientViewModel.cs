@@ -63,6 +63,13 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             OKCommand = new RelayCommand(x => OKError());
 
         }
+        public string[] EditableClientFields => new string[]
+        {
+            EditableClient?.Name,
+            EditableClient?.DniNif,
+            EditableClient?.Tel,
+            EditableClient?.Mail
+        };
         private void EditClient()
         {
             if (SelectedClient != null)
@@ -73,6 +80,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             }
         }
         private void SaveClient() {
+
             if (ClientCheck(EditableClient)) {
                 if (SelectedClient != null)
                 {
@@ -139,6 +147,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
         {
             _mainViewModel.CurrentView = new EditarUsuari { DataContext = this };
         }
+
     }
        
 
