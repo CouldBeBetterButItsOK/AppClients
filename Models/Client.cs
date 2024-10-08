@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.TextFormatting;
 
 namespace WPF_MVVM_SPA_Template.Models
 {
@@ -15,9 +17,12 @@ namespace WPF_MVVM_SPA_Template.Models
         public int Discount { get; set; } // Descuento en porcentaje
         public DateTime RegistrationDate { get; set; } // Fecha de alta
         public double TotalAnualSells { get; set; } // Ventas totales anuales
+        public string Tel {  get; set; }
+        public MailAddress MailAddress { get; set; }
+        public string Mail { get; set; }
 
         // Constructor
-        public Client(string name, string dniNif, string code, bool profesional, int discount, DateTime registrationDate, double anualTotalSells)
+        public Client(string name, string dniNif, string code, bool profesional, int discount, DateTime registrationDate, double anualTotalSells, String tel, String mail)
         {
             Name = name;
             DniNif = dniNif;
@@ -26,6 +31,9 @@ namespace WPF_MVVM_SPA_Template.Models
             Discount = discount;
             RegistrationDate = registrationDate;
             TotalAnualSells = anualTotalSells;
+            Tel = tel;
+            Mail = mail;
+            MailAddress = new MailAddress(mail, name);
         }
         public  Client(Client client)
         {
@@ -36,6 +44,9 @@ namespace WPF_MVVM_SPA_Template.Models
             this.Discount = client.Discount;
             this.RegistrationDate = client.RegistrationDate;
             this.TotalAnualSells = client.TotalAnualSells;
+            this.Tel = client.Tel;
+            this.MailAddress = new MailAddress(client.Mail, client.Name);
+            this.Mail = client.Mail;
         }
         public Client() { }
         public void cloneClient(Client client)
@@ -47,6 +58,10 @@ namespace WPF_MVVM_SPA_Template.Models
             this.Discount = client.Discount;
             this.RegistrationDate = client.RegistrationDate;
             this.TotalAnualSells = client.TotalAnualSells;
+            this.Tel = client.Tel;
+            this.MailAddress = new MailAddress(client.Mail,client.Name);
+            this.Mail = client.Mail;
+
         }
     }
 }

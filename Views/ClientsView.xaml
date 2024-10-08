@@ -23,17 +23,19 @@
                 <DataGridTextColumn Header="Pro" Binding="{Binding Profesional}" Width="Auto" />
                 <DataGridTextColumn Header="Dscount (%)" Binding="{Binding Discount}" Width="Auto" />
                 <DataGridTextColumn Header="Re.Date" Binding="{Binding RegistrationDate, StringFormat=\{0:yyyy-MM-dd\}}" Width="Auto" />
-                <DataGridTextColumn Header="Total Annual Sales" Binding="{Binding TotalAnualSells}" Width="Auto" />
+                <DataGridTextColumn Header="AnnualSales" Binding="{Binding TotalAnualSells}" Width="Auto" />
+                <DataGridTextColumn Header="Tel" Binding="{Binding Tel}" Width="Auto"/>
+                <DataGridTextColumn Header="Mail" Binding="{Binding MailAddress.Address}" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Editar" Command="{Binding EditClientCommand}" IsEnabled="{Binding SelectedClient}" Margin="5" Padding="10,5" 
-                    Style="{StaticResource ModernPrimaryButtonStyle}"/>
-            <Button Content="Afegir" Command="{Binding AddClientCommand}" Margin="5" Padding="10,5" 
-                    Style="{StaticResource ModernPrimaryButtonStyle}"/>
-            <Button Content="Eliminar" Command="{Binding DelClientCommand}" IsEnabled="{Binding SelectedClient}" 
-                    Margin="5" Padding="10,5" Style="{StaticResource ModernSecundaryButtonStyle}"/>
+            <Button Content="Edit Client" Command="{Binding EditClientCommand}" IsEnabled="{Binding SelectedClient}" Margin="5" Padding="10,5" 
+                    Style="{StaticResource ModernPrimaryButtonStyle}" Width="100"/>
+            <Button Content="Add Client" Command="{Binding AddClientCommand}" Margin="5" Padding="10,5" 
+                    Style="{StaticResource ModernPrimaryButtonStyle}" Width="100"/>
+            <Button Content="Delete Client" Command="{Binding DelClientCommand}" IsEnabled="{Binding SelectedClient}" 
+                    Margin="5" Padding="10,5" Style="{StaticResource ModernSecundaryButtonStyle}" Width="100"/>
         </StackPanel>
     </Grid>
 </UserControl>
