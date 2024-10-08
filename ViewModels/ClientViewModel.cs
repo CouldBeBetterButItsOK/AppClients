@@ -43,6 +43,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
         public RelayCommand EditClientCommand { get; set; }
         public RelayCommand CancelCommand { get; set; }
         public RelayCommand SaveCommand { get; set; }
+        public RelayCommand OKCommand { get; set; }
 
         public ClientViewModel(MainViewModel mainViewModel)
         {
@@ -56,6 +57,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             EditClientCommand = new RelayCommand(x => EditClient(), x => SelectedClient != null);
             SaveCommand = new RelayCommand(x => SaveClient(), x => EditableClient != null);
             CancelCommand = new RelayCommand(x => CancelEdit());
+            OKCommand = new RelayCommand(x => OKError());
 
         }
         private void EditClient()
@@ -75,16 +77,16 @@ namespace WPF_MVVM_SPA_Template.ViewModels
                     SelectedClient = null;
                 }
                 else { Clients.Add(new Client(EditableClient));
-                    } }
+                    }
+                _mainViewModel.CurrentView = new ClientsView { DataContext = this };
+            }
             else{
-                MessageBox.Show("El client no es válid. Per favor, revisi les dades i torni-ho a probar.",
-                        "Error de validació",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Error);
+
+                _mainViewModel.CurrentView = new CustomMessageBox("El client no es válid. Per favor, revisi les dades i torni-ho a probar.") { DataContext = this };
             }
                 
 
-            _mainViewModel.CurrentView = new ClientsView { DataContext = this };
+            
             
         }
 
@@ -111,14 +113,12 @@ namespace WPF_MVVM_SPA_Template.ViewModels
         }
         public Boolean ClientCheck(Client client)
         {
-            if(client.Name != null & client.Name != "")
-            {
-                if(client.DniNif != null & client.DniNif != "")
-                {
-                    return true;
-                }
-            }
-            return false;
+            return !string.IsNullOrWhiteSpace(client.Name) && !string.IsNullOrWhiteSpace(client.DniNif);
+
+        }
+        private void OKError()
+        {
+            _mainViewModel.CurrentView = new ClientsView { DataContext = this };
         }
     }
        

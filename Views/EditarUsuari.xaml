@@ -44,7 +44,7 @@
                     <Button Content="Save" Command="{Binding SaveCommand}" Width="70" 
                             FontSize="10" Padding="3" Margin="3" Background="#FF007ACC" Foreground="White"/>
                     <Button Content="Cancel" Command="{Binding CancelCommand}" Width="70" 
-                            FontSize="10" Padding="3" Margin="3" Background="#FFDD4B39" Foreground="White"/>
+                            FontSize="10" Padding="3" Margin="3" Background="#790000" Foreground="White"/>
                 </StackPanel>
             </StackPanel>
         </Border>
