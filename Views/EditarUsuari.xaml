@@ -7,53 +7,54 @@
              d:DesignHeight="300" d:DesignWidth="500">
    
     <Grid Background="White" Margin="5">
+        
         <Border BorderBrush="#FFCCCCCC" BorderThickness="1" CornerRadius="6" Padding="10">
             <StackPanel>
                 <!-- Campo para el Nombre -->
                 <TextBlock Text="Name:" FontSize="12" FontWeight="Bold" Margin="0,2"/>
                 <TextBox Text="{Binding EditableClient.Name, UpdateSourceTrigger=PropertyChanged}" 
-                         FontSize="10" Padding="2" Margin="0,0,0,5"/>
+                         FontSize="10" Padding="2" Margin="0,0,0,5" TextChanged="Text_Changed"/>
 
                 <!-- Campo para el DNI/NIF -->
                 <TextBlock Text="DNI/NIF:" FontSize="12" FontWeight="Bold" Margin="0,2"/>
                 <TextBox Text="{Binding EditableClient.DniNif, UpdateSourceTrigger=PropertyChanged}" 
-                         FontSize="10" Padding="2" Margin="0,0,0,5"/>
+                         FontSize="10" Padding="2" Margin="0,0,0,5" TextChanged="Text_Changed"/>
 
                 <!-- Campo para Profesional (CheckBox para el booleano) -->
                 <TextBlock Text="Profesional:" FontSize="12" FontWeight="Bold" Margin="0,2"/>
                 <CheckBox IsChecked="{Binding EditableClient.Profesional, UpdateSourceTrigger=PropertyChanged}" 
-                          FontSize="10" Margin="0,0,0,5"/>
+                          FontSize="10" Margin="0,0,0,5" TextChanged="Text_Changed"/>
 
                 <!-- Campo para el Descuento -->
                 <TextBlock Text="Discount (%):" FontSize="12" FontWeight="Bold" Margin="0,2"/>
                 <TextBox Text="{Binding EditableClient.Discount, UpdateSourceTrigger=PropertyChanged}" 
-                         FontSize="10" Padding="2" Margin="0,0,0,5"/>
+                         FontSize="10" Padding="2" Margin="0,0,0,5" TextChanged="Text_Changed"/>
 
                 <!-- Campo para la Fecha de Registro (modificable) -->
                 <TextBlock Text="Registration Date:" FontSize="12" FontWeight="Bold" Margin="0,2"/>
                 <DatePicker SelectedDate="{Binding EditableClient.RegistrationDate, UpdateSourceTrigger=PropertyChanged}" 
-                            FontSize="10" Margin="0,0,0,5"/>
+                            FontSize="10" Margin="0,0,0,5" TextChanged="Text_Changed"/>
 
                 <!-- Campo para las Ventas Anuales -->
                 <TextBlock Text="Total Annual Sales:" FontSize="12" FontWeight="Bold" Margin="0,2"/>
                 <TextBox Text="{Binding EditableClient.TotalAnualSells, UpdateSourceTrigger=PropertyChanged}" 
-                         FontSize="10" Padding="2" Margin="0,0,0,5"/>
+                         FontSize="10" Padding="2" Margin="0,0,0,5" TextChanged="Text_Changed"/>
 
                 <!-- Campo para el Teléfono -->
                 <TextBlock Text="Tel:" FontSize="12" FontWeight="Bold" Margin="0,2"/>
                 <TextBox Text="{Binding EditableClient.Tel, UpdateSourceTrigger=PropertyChanged}" 
-                         FontSize="10" Padding="2" Margin="0,0,0,5"/>
+                         FontSize="10" Padding="2" Margin="0,0,0,5" TextChanged="Text_Changed"/>
 
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Width="450">
                         <TextBlock Text="Mail:" FontSize="12" FontWeight="Bold" Margin="0,2"/>
-                        <TextBox Text="{Binding EditableClient.Mail, UpdateSourceTrigger=PropertyChanged}" 
+                        <TextBox Text="{Binding EditableClient.Mail, UpdateSourceTrigger=PropertyChanged}" TextChanged="Text_Changed" 
                          FontSize="10" Padding="2" Margin="0,0,0,5"/>
                     </StackPanel>
                     <!-- Botones para Guardar y Cancelar alineados a la derecha -->
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                        <Button Content="Save" Command="{Binding SaveCommand}"
-                            Padding="10,5" Margin="5" Style="{StaticResource ModernPrimaryButtonStyle}" Width="80" IsEnabled="{Binding EditableClientFields, Converter={StaticResource EnableButtonConverter}}"/>
+                        <Button x:Name="saveButton" Content="Save" Command="{Binding SaveCommand}"
+                            Padding="10,5" Margin="5" Style="{StaticResource ModernPrimaryButtonStyle}" Width="80" IsEnabled="False"/>
                         <Button Content="Cancel" Command="{Binding CancelCommand}" 
                             Padding="10,5" Margin="5" Style="{StaticResource ModernSecundaryButtonStyle}" Width="80"/>
                     </StackPanel>

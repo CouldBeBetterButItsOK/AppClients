@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_MVVM_SPA_Template.ViewModels;
 
 namespace WPF_MVVM_SPA_Template.Views
 {
@@ -23,6 +24,15 @@ namespace WPF_MVVM_SPA_Template.Views
         public EditarUsuari()
         {
             InitializeComponent();
+    }
+
+        private void Text_Changed(object sender, TextChangedEventArgs e)
+        {
+            var viewModel = this.DataContext as ClientViewModel;
+            if (viewModel != null)
+            {
+                saveButton.IsEnabled = viewModel.ObligatoryFields;
+            }
         }
     }
 }
