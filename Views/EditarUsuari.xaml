@@ -23,7 +23,7 @@
                 <!-- Campo para Profesional (CheckBox para el booleano) -->
                 <TextBlock Text="Profesional:" FontSize="12" FontWeight="Bold" Margin="0,2"/>
                 <CheckBox IsChecked="{Binding EditableClient.Profesional, UpdateSourceTrigger=PropertyChanged}" 
-                          FontSize="10" Margin="0,0,0,5" TextChanged="Text_Changed"/>
+                          FontSize="10" Margin="0,0,0,5" Checked="Text_Changed" Unchecked="Text_Changed"/>
 
                 <!-- Campo para el Descuento -->
                 <TextBlock Text="Discount (%):" FontSize="12" FontWeight="Bold" Margin="0,2"/>
@@ -33,7 +33,7 @@
                 <!-- Campo para la Fecha de Registro (modificable) -->
                 <TextBlock Text="Registration Date:" FontSize="12" FontWeight="Bold" Margin="0,2"/>
                 <DatePicker SelectedDate="{Binding EditableClient.RegistrationDate, UpdateSourceTrigger=PropertyChanged}" 
-                            FontSize="10" Margin="0,0,0,5" TextChanged="Text_Changed"/>
+                            FontSize="10" Margin="0,0,0,5" SelectedDateChanged="Text_Changed"/>
 
                 <!-- Campo para las Ventas Anuales -->
                 <TextBlock Text="Total Annual Sales:" FontSize="12" FontWeight="Bold" Margin="0,2"/>

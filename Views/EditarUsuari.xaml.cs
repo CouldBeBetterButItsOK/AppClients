@@ -34,5 +34,22 @@ namespace WPF_MVVM_SPA_Template.Views
                 saveButton.IsEnabled = viewModel.ObligatoryFields;
             }
         }
+        private void Text_Changed(object sender, CalendarDateChangedEventArgs e)
+        {
+            var viewModel = this.DataContext as ClientViewModel;
+            if (viewModel != null)
+            {
+                saveButton.IsEnabled = viewModel.ObligatoryFields;
+            }
+        }
+        private void Text_Changed(object sender, RoutedEventArgs e)
+        {
+            var viewModel = this.DataContext as ClientViewModel;
+            if (viewModel != null)
+            {
+                saveButton.IsEnabled = viewModel.ObligatoryFields;
+            }
+        }
+
     }
 }
