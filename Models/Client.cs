@@ -18,11 +18,11 @@ namespace WPF_MVVM_SPA_Template.Models
         public DateTime RegistrationDate { get; set; } // Fecha de alta
         public double TotalAnualSells { get; set; } // Ventas totales anuales
         public string Tel {  get; set; }
-        public MailAddress MailAddress { get; set; }
         public string Mail { get; set; }
+        public int[] Results { get; set; } = new int[12];
 
         // Constructor
-        public Client(string name, string dniNif, string code, bool profesional, int discount, DateTime registrationDate, double anualTotalSells, String tel, String mail)
+        public Client(string name, string dniNif, string code, bool profesional, int discount, DateTime registrationDate, double anualTotalSells, string tel, string mail)
         {
             Name = name;
             DniNif = dniNif;
@@ -33,7 +33,11 @@ namespace WPF_MVVM_SPA_Template.Models
             TotalAnualSells = anualTotalSells;
             Tel = tel;
             Mail = mail;
-            MailAddress = new MailAddress(mail, name);
+            Random random = new Random();
+            for (int i = 0; i < Results.Length; i++)
+            {
+                Results[i] = random.Next(1, 101);
+            }
         }
         public  Client(Client client)
         {
@@ -45,23 +49,18 @@ namespace WPF_MVVM_SPA_Template.Models
             this.RegistrationDate = client.RegistrationDate;
             this.TotalAnualSells = client.TotalAnualSells;
             this.Tel = client.Tel;
-            this.MailAddress = new MailAddress(client.Mail, client.Name);
             this.Mail = client.Mail;
+            this.Results = client.Results;
+           
         }
-        public Client() { }
-        public void cloneClient(Client client)
-        {
-            this.Name = client.Name;
-            this.DniNif = client.DniNif;
-            this.Code = client.Code;
-            this.Profesional = client.Profesional;
-            this.Discount = client.Discount;
-            this.RegistrationDate = client.RegistrationDate;
-            this.TotalAnualSells = client.TotalAnualSells;
-            this.Tel = client.Tel;
-            this.MailAddress = new MailAddress(client.Mail,client.Name);
-            this.Mail = client.Mail;
+        public Client() {
 
+            Random random = new Random();
+            for (int i = 0; i < Results.Length; i++)
+            {
+                Results[i] = random.Next(1, 101);
+            }
         }
+      
     }
 }

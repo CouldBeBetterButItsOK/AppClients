@@ -15,6 +15,9 @@ using System.Net.Mail;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Xps.Serialization;
+using LiveCharts;
+using System.Security.Cryptography.X509Certificates;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WPF_MVVM_SPA_Template.ViewModels
 {
@@ -43,19 +46,27 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             get { return _editableClient; }
             set { _editableClient = value; OnPropertyChanged(); OnPropertyChanged(nameof(ObligatoryFields));}
         }
+        private ChartValues<int> _selectedResults;
+        public ChartValues<int> SelectedResults
+        {
+            get { return _selectedResults; }
+            set { _selectedResults = value; OnPropertyChanged(); }
+        }
+        public string[] YearTimeLine { get; set; } = { "GEN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AGU", "SET", "OCT", "NOV", "DEC" };
         public RelayCommand AddClientCommand { get; set; }
         public RelayCommand DelClientCommand { get; set; }
         public RelayCommand EditClientCommand { get; set; }
         public RelayCommand CancelCommand { get; set; }
         public RelayCommand SaveCommand { get; set; }
         public RelayCommand OKCommand { get; set; }
+        public RelayCommand ShowResultsCommand {  get; set; }
 
         public ClientViewModel(MainViewModel mainViewModel)
         {
             _mainViewModel = mainViewModel;
             // Carreguem estudiants a memòria mode de prova
-            Clients.Add(new Client { Code = "C001", Name = "David", DniNif = "12345678A", Profesional = true, Discount = 10, RegistrationDate = DateTime.Now, TotalAnualSells = 1500.00, Tel = "654321432", Mail = "david@uvic.cat", MailAddress = new MailAddress("david@uvic.cat", "David") });
-            Clients.Add(new Client { Code = "C002", Name = "Jordi", DniNif = "87654321B", Profesional = false, Discount = 5, RegistrationDate = DateTime.Now, TotalAnualSells = 1200.00, Tel = "654321431", Mail = "jordi@uvic.cat", MailAddress = new MailAddress("jordi@uvic.cat", "Jordi") });
+            Clients.Add(new Client { Code = "C001", Name = "David", DniNif = "12345678A", Profesional = true, Discount = 10, RegistrationDate = DateTime.Now, TotalAnualSells = 1500.00, Tel = "654321432", Mail = "david@uvic.cat" });
+            Clients.Add(new Client { Code = "C002", Name = "Jordi", DniNif = "87654321B", Profesional = false, Discount = 5, RegistrationDate = DateTime.Now, TotalAnualSells = 1200.00, Tel = "654321431", Mail = "jordi@uvic.cat"});
             // Inicialitzem els diferents commands disponibles (accions)
             AddClientCommand = new RelayCommand(x => AddClient());
             DelClientCommand = new RelayCommand(x => DelClient());
@@ -63,6 +74,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             SaveCommand = new RelayCommand(x => SaveClient(), x => EditableClient != null);
             CancelCommand = new RelayCommand(x => CancelEdit());
             OKCommand = new RelayCommand(x => OKError());
+            ShowResultsCommand = new RelayCommand(x => ShowResults(), x => SelectedClient != null);
         
 
         }
@@ -70,7 +82,6 @@ namespace WPF_MVVM_SPA_Template.ViewModels
         {
             get
             {
-                Debug.WriteLine("Funciona tot i que nose per que x6");
                 return SelectedClient != null ;
             }
             
@@ -98,12 +109,20 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             Debug.WriteLine("Client editable null:");
             return false;
         }
+        private void ShowResults()
+        {
+            if (SelectedClient != null)
+            {
+                SelectedResults = new ChartValues<int>(SelectedClient.Results);
+
+                _mainViewModel.CurrentView = new GraphicsView { DataContext = this };
+            }
+        }
         private void EditClient()
         {
             if (SelectedClient != null)
             {
-                EditableClient = new Client();
-                EditableClient.cloneClient(SelectedClient);
+                EditableClient = new Client(SelectedClient);
                 _mainViewModel.CurrentView = new EditarUsuari { DataContext = this };
             }
         }
@@ -112,7 +131,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             if (ClientCheck(EditableClient)) {
                 if (SelectedClient != null)
                 {
-                    SelectedClient.cloneClient(EditableClient);
+                    SelectedClient = new Client(EditableClient);
                     SelectedClient = null;
                 }
                 else { Clients.Add(new Client(EditableClient));
@@ -137,13 +156,13 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             EditableClient.Code = "C" + (Clients.Count + 1).ToString("D3");
             _mainViewModel.CurrentView = new EditarUsuari { DataContext = this };
         }
-
+        
         private void DelClient()
         {
             if (SelectedClient != null)
                 Clients.Remove(SelectedClient);
         }
-        public Boolean ClientCheck(Client client){
+        public bool ClientCheck(Client client){
             Regex EmailRegex = new Regex(
             @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
             RegexOptions.IgnoreCase);
@@ -168,7 +187,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             ShowError(error);
             return false;
         }    
-        private void ShowError(String error)
+        private void ShowError(string error)
         {
             _mainViewModel.CurrentView = new CustomMessageBox(error) { DataContext = this };
         }
@@ -176,6 +195,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
         {
             _mainViewModel.CurrentView = new EditarUsuari { DataContext = this };
         }
+       
 
     }
        

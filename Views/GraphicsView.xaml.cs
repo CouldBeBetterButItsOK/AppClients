@@ -18,9 +18,9 @@ namespace WPF_MVVM_SPA_Template.Views
     /// <summary>
     /// Lógica de interacción para GraficsView.xaml
     /// </summary>
-    public partial class GraficsView : UserControl
+    public partial class GraphicsView : UserControl
     {
-        public GraficsView()
+        public GraphicsView()
         {
             InitializeComponent();
         }

@@ -102,7 +102,7 @@
         </Setter>
     </Style>
 
-    
+
     <Style x:Key="ModernButtonStyle" TargetType="Button">
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Padding" Value="5,5"/>

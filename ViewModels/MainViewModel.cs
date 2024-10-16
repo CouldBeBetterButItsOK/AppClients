@@ -11,7 +11,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
         // ViewModels de les diferents opcions
       
         public ClientViewModel ClientVM { get; set; }
-        public FacturaViewModel FacturaVM { get; set; }
+        public IniciViewModel IniciVM { get; set; }
 
         // Propietat que conté la vista actual (és un objecte)
         private object? _currentView;
@@ -37,10 +37,9 @@ namespace WPF_MVVM_SPA_Template.ViewModels
         public MainViewModel()
         {
             // Inicialitzem els diferents ViewModels
+            IniciVM = new IniciViewModel(this);
             ClientVM = new ClientViewModel(this);
-            FacturaVM = new FacturaViewModel(this);
-            // Mostra la vista principal inicialment
-            SelectedView = "Clients";
+            SelectedView = "Inici";
             ChangeView();
         }
 
@@ -50,7 +49,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             switch (SelectedView)
             {
                 case "Clients": CurrentView = new ClientsView { DataContext = ClientVM }; break;
-                case "Factures": CurrentView = new FacturesView { DataContext = FacturaVM }; break;
+                case "Inici": CurrentView = new IniciView { DataContext = IniciVM }; break;
             }
         }
 
