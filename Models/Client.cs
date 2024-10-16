@@ -60,6 +60,7 @@ namespace WPF_MVVM_SPA_Template.Models
             {
                 Results[i] = random.Next(1, 101);
             }
+            RegistrationDate = DateTime.Now;
         }
       
     }
