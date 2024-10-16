@@ -166,6 +166,7 @@
                 <Setter Property="Foreground" Value="#E0E0E0"/>
                 <Setter Property="BorderBrush" Value="DarkGray"/>
             </Trigger>
+            
         </Style.Triggers>
     </Style>
     <Style TargetType="DataGridCell">

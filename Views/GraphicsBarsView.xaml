@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WPF_MVVM_SPA_Template.Views.GraphicsView"
+﻿<UserControl x:Class="WPF_MVVM_SPA_Template.Views.GraphicsBarsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <lvc:CartesianChart Name="Grafic" Grid.Row="0">
             <lvc:CartesianChart.Series>
-                <lvc:LineSeries Title="Rendiment anual de client" Values="{Binding SelectedResults}" />
+                <lvc:ColumnSeries Title="Rendiment anual de client" Values="{Binding SelectedResults}" />
             </lvc:CartesianChart.Series>
 
             <lvc:CartesianChart.AxisX>
@@ -25,11 +25,11 @@
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5">
-            <Button Content="SHOW RESULTS IN A BAR CHART" Command="{Binding ShowResultsInBarsCommand}" 
+            <Button Content="SHOW RESULTS IN A LINE CHART" Command="{Binding ShowResultsCommand}" 
             Margin="5" Padding="10,5" Style="{StaticResource ModernButtonStyle}"/>
+
             <Button Content="BACK TO CLIENTS" Command="{Binding CancelCommand}" 
             Margin="5" Padding="10,5" Style="{StaticResource ModernButtonStyle}"/>
-        
         </StackPanel>
     </Grid>
 </UserControl>

@@ -59,6 +59,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
         public RelayCommand SaveCommand { get; set; }
         public RelayCommand OKCommand { get; set; }
         public RelayCommand ShowResultsCommand {  get; set; }
+        public RelayCommand ShowResultsInBarsCommand { get; set; }
 
         public ClientViewModel(MainViewModel mainViewModel)
         {
@@ -74,7 +75,9 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             CancelCommand = new RelayCommand(x => CancelEdit());
             OKCommand = new RelayCommand(x => OKError());
             ShowResultsCommand = new RelayCommand(x => ShowResults(), x => SelectedClient != null);
-        
+            ShowResultsInBarsCommand = new RelayCommand(x => ShowResultsInBars(), x => SelectedClient != null);
+
+
 
         }
         public bool SelectedClientBoolean
@@ -115,6 +118,15 @@ namespace WPF_MVVM_SPA_Template.ViewModels
                 SelectedResults = new ChartValues<int>(SelectedClient.Results);
 
                 _mainViewModel.CurrentView = new GraphicsView { DataContext = this };
+            }
+        }
+        private void ShowResultsInBars()
+        {
+            if (SelectedClient != null)
+            {
+                SelectedResults = new ChartValues<int>(SelectedClient.Results);
+
+                _mainViewModel.CurrentView = new GraphicsBarsView { DataContext = this };
             }
         }
         private void EditClient()
@@ -165,7 +177,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             Regex EmailRegex = new Regex(
             @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
             RegexOptions.IgnoreCase);
-            string error = "";
+            string error;
             if(client.Name.Length >= 3)
             {
                 if (client.DniNif.Length >= 3)
