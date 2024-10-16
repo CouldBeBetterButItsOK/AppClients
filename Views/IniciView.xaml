@@ -10,10 +10,10 @@
        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
        VerticalAlignment="Center" Style="{DynamicResource ModernLabelStyle}" HorizontalAlignment="Center" Margin="10,28,0,150" />
         <StackPanel Orientation="Horizontal" Width="auto" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
-            <Button  Content="Tema clar" Command="{Binding LightThemeCommand}" IsEnabled="{Binding IsntLightTheme}" 
+            <Button  Content="LIGHT THEME" Command="{Binding LightThemeCommand}" IsEnabled="{Binding IsntLightTheme}" 
             Padding="10,5" Margin="5" Style="{DynamicResource ModernButtonStyle}" Width="auto" Height="auto"/>
 
-            <Button  Content="Tema Fosc" Command="{Binding DarkThemeCommand}" IsEnabled="{Binding IsLightTheme}"
+            <Button  Content="DARK THEME" Command="{Binding DarkThemeCommand}" IsEnabled="{Binding IsLightTheme}"
             Padding="10,5" Margin="5" Style="{DynamicResource ModernButtonStyle}" Width="auto" Height="auto"/>
         </StackPanel>
     </Grid>
