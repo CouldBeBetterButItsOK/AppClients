@@ -8,12 +8,13 @@
     <Grid Margin="10" >
         <Label Grid.Row="0" Name="Titol" Content="App pocha de gestió de clients" Width="auto" Height="auto" FontSize="30" 
        HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-       VerticalAlignment="Center" Style="{StaticResource ModernLabelStyle}" HorizontalAlignment="Center" Margin="10,28,0,150" />
+       VerticalAlignment="Center" Style="{DynamicResource ModernLabelStyle}" HorizontalAlignment="Center" Margin="10,28,0,150" />
         <StackPanel Orientation="Horizontal" Width="auto" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
-            <Button  Content="Tema clar" Click="LightButton" IsEnabled="{Binding lightTheme}" 
-            Padding="10,5" Margin="5" Style="{StaticResource ModernChangedThemeButtonStyle}" Width="auto" Height="auto"/>
-            <Button  Content="Tema Fosc" Click="DarkTheme" IsEnabled="{Binding darkTheme}"
-            Padding="10,5" Margin="5" Style="{StaticResource ModernChangedThemeButtonStyle}" Width="auto" Height="auto"/>
+            <Button  Content="Tema clar" Command="{Binding LightThemeCommand}" IsEnabled="{Binding IsntLightTheme}" 
+            Padding="10,5" Margin="5" Style="{DynamicResource ModernButtonStyle}" Width="auto" Height="auto"/>
+
+            <Button  Content="Tema Fosc" Command="{Binding DarkThemeCommand}" IsEnabled="{Binding IsLightTheme}"
+            Padding="10,5" Margin="5" Style="{DynamicResource ModernButtonStyle}" Width="auto" Height="auto"/>
         </StackPanel>
     </Grid>
 </UserControl>

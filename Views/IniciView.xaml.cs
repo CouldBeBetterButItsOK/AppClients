@@ -24,30 +24,6 @@ namespace WPF_MVVM_SPA_Template.Views
         {
             InitializeComponent();
         }
-        private bool darkTheme = false;
-        private bool lightTheme = true;
-        private void DarkTheme(object sender, RoutedEventArgs e)
-        {
-            switchTheme("DarkTheme.xaml");
-            darkTheme = true;
-            lightTheme = false;
-        }
-        private void LightButton(object sender, RoutedEventArgs e)
-        {
-            switchTheme("DarkTheme.xaml");
-            darkTheme = false;
-            lightTheme = true;
-        }
-        private void switchTheme(string theme)
-        {
-            Application.Current.Resources.MergedDictionaries.Clear();
-
-            var themeUri = new Uri($"pack://application:,,,/Views/Themes/{theme}", UriKind.Absolute);
-            var themeDictionary = new ResourceDictionary { Source = themeUri };
-
-            Application.Current.Resources.MergedDictionaries.Add(themeDictionary);
-
-            Application.Current.MainWindow.UpdateLayout();
-        }
+        
     }
 }

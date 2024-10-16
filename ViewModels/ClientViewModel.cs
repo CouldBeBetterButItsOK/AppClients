@@ -11,7 +11,6 @@ using WPF_MVVM_SPA_Template.Models;
 using WPF_MVVM_SPA_Template.Views;
 using System.Diagnostics.Eventing.Reader;
 using System.Windows;
-using System.Net.Mail;
 using System.Xml.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Xps.Serialization;
