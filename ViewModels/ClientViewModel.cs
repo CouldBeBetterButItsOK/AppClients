@@ -142,7 +142,7 @@ namespace WPF_MVVM_SPA_Template.ViewModels
             if (ClientCheck(EditableClient)) {
                 if (SelectedClient != null)
                 {
-                    SelectedClient = new Client(EditableClient);
+                    SelectedClient.CloneClient(EditableClient);
                     SelectedClient = null;
                 }
                 else { Clients.Add(new Client(EditableClient));

@@ -62,6 +62,18 @@ namespace WPF_MVVM_SPA_Template.Models
             }
             RegistrationDate = DateTime.Now;
         }
-      
+        public void CloneClient(Client client)
+        {
+            this.Name = client.Name;
+            this.DniNif = client.DniNif;
+            this.Code = client.Code;
+            this.Profesional = client.Profesional;
+            this.Discount = client.Discount;
+            this.RegistrationDate = client.RegistrationDate;
+            this.TotalAnualSells = client.TotalAnualSells;
+            this.Tel = client.Tel;
+            this.Mail = client.Mail;
+            this.Results = client.Results;
+        }
     }
 }
