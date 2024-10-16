@@ -21,13 +21,13 @@
             </lvc:CartesianChart.AxisX>
 
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Resultats" />
+                <lvc:Axis Title="Results" />
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5">
-            <Button Content="SHOW RESULTS IN A BAR CHART" Command="{Binding ShowResultsInBarsCommand}" 
+            <Button Content="BAR CHART" Command="{Binding ShowResultsInBarsCommand}" 
             Margin="5" Padding="10,5" Style="{StaticResource ModernButtonStyle}"/>
-            <Button Content="BACK TO CLIENTS" Command="{Binding CancelCommand}" 
+            <Button Content="RETURN" Command="{Binding CancelCommand}" 
             Margin="5" Padding="10,5" Style="{StaticResource ModernButtonStyle}"/>
         
         </StackPanel>
