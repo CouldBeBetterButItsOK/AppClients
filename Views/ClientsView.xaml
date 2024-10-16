@@ -16,7 +16,8 @@
                   IsReadOnly="True"
                   AutoGenerateColumns="False" 
                   Grid.Row="0"
-                  SelectionUnit="FullRow">
+                  SelectionUnit="FullRow"
+                  >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Code" Binding="{Binding Code}" Width="Auto" />
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />

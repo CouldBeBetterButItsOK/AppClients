@@ -10,7 +10,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\Themes\Cursors\cursor.cur" />
+    <None Remove="Views\Themes\Cursors\cursorDiamond.cur" />
+    <None Remove="Views\Themes\Cursors\cursorDiamondPointer.cur" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Themes\Cursors\cursorDiamond.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Views\Themes\Cursors\cursorDiamondPointer.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

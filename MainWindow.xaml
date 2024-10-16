@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_MVVM_SPA_Template"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Style="{DynamicResource MainWindow}">
+        Title="APP POCHA DE GESTIÓ DE CLIENTS" Height="450" Width="800" Style="{DynamicResource MainWindow}">
     <DockPanel>
         <!-- Barra de navegació lateral estil SPA amb ListBox -->
         <ListBox DockPanel.Dock="Left" Width="100" Background="#2C3E50" Foreground="White" BorderThickness="0"
              SelectedValue="{Binding SelectedView, Mode=TwoWay}" SelectedValuePath="Tag">
-            <ListBoxItem Content="Inici" Tag="Inici" FontSize="16" Padding="10" HorizontalContentAlignment="Left" Style="{StaticResource ModernSidebarStyle}"/>
-            <ListBoxItem Content="Clients" Tag="Clients" FontSize="16" Padding="10" HorizontalContentAlignment="Left" Style="{StaticResource ModernSidebarStyle}"/>
+            <ListBoxItem Content="Inici" Tag="Inici" FontSize="16" Padding="10" HorizontalContentAlignment="Left" Style="{DynamicResource ModernSidebarStyle}"/>
+            <ListBoxItem Content="Clients" Tag="Clients" FontSize="16" Padding="10" HorizontalContentAlignment="Left" Style="{DynamicResource ModernSidebarStyle}"/>
 
         </ListBox>
         <!-- Secció de contingut dinàmic (Grid) -->

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WPF_MVVM_SPA_Template"
              StartupUri="MainWindow.xaml">
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
